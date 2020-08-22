@@ -42,6 +42,26 @@ Toyed around with Conquerer of Completion ( [coc.nvim](https://github.com/neocli
 
 For Laravel projects. An IDE-helper is needed to installed. You can get it by using
 
+This is because Laravel hides its implementation behind a Facade. That is why you can use things like `Route::get()` in `route.php` and `Eloquent` syntaxes in your `Controllers` such as the following examples
+
+```php
+<?php
+public function index() {
+User::get();
+}
+?>
+```
+
+Each facade implementation are called via the `__callStatic()` and Laravel simply pulled out the existing Singleton from the bags of Inversion of Control (IoC) container. Simply put, IoC is the implementation of Dependency Injection.
+
+With this Facades, we developers simply use the functionality provides by Laravel applications, which makes us easily write fluent codes.
+
+Due to this implementation, IDE unable to map the underlying facade. Hence to solve that issue, we need a way to build the "bridge" that allow the IDE to connect the dots and make its way into `vendor/laravel/illuminate`.
+
+Lucky for us, Barryvdh has thought of one solution for us, by generate an IDE helper class that allow IDE to reads the contents and maps into the underlying Laravel implementation.
+
+Simply install `barryvdh/laravel-ide-helper` and configure it.
+
 ```bash
 composer require --dev barryvdh/laravel-ide-helper
 ```
@@ -81,3 +101,5 @@ public function register() {
 }
 ?>
 ```
+
+That is it! Now every IDE would not be squawking for error messages in your `routes.php` and `route/web.php` or `User::get()` in your controllers
