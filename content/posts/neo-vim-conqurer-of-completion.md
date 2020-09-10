@@ -4,9 +4,7 @@ date: 2020-08-22T10:56:26+08:00
 draft: true
 ---
 
-Toyed around with Conquerer of Completion ( [coc.nvim](https://github.com/neocli
-de/coc.nvim) ) language server. This one of the best language server plug ins cr
-eated for vim/neo-vim. It is a joy to bring IDE-like suggestions.
+Toyed around with Conquerer of Completion ( [coc.nvim](https://github.com/neoclide/coc.nvim) ) language server. This one of the best language server plug ins created for vim/neo-vim. It is a joy to bring IDE-like suggestions.
 
 
 ```json
@@ -42,12 +40,9 @@ eated for vim/neo-vim. It is a joy to bring IDE-like suggestions.
 }
 ```
 
-For Laravel projects. An IDE-helper is needed to installed. You can get it by us
-ing
+For Laravel projects. An IDE-helper is needed to installed. You can get it by using
 
-This is because Laravel hides its implementation behind a Facade. That is why yo
-u can use things like `Route::get()` in `route.php` and `Eloquent` syntaxes in y
-our `Controllers` such as the following examples
+This is because Laravel hides its implementation behind a Facade. That is why you can use things like `Route::get()` in `route.php` and `Eloquent` syntaxes in your `Controllers` such as the following examples
 
 ```php
 <?php
@@ -57,20 +52,13 @@ User::get();
 ?>
 ```
 
-Each facade implementation are called via the `__callStatic()` and Laravel simpl
-y pulled out the existing Singleton from the bags of Inversion of Control (IoC)
-container. Simply put, IoC is the implementation of Dependency Injection.
+Each facade implementation are called via the `__callStatic()` and Laravel simply pulled out the existing Singleton from the bags of Inversion of Control (IoC) container. Simply put, IoC is the implementation of Dependency Injection.
 
-With this Facades, we developers simply use the functionality provides by Larave
-l applications, which makes us easily write fluent codes.
+With this Facades, we developers simply use the functionality provides by Laravel applications, which makes us easily write fluent codes.
 
-Due to this implementation, IDE unable to map the underlying facade. Hence to so
-lve that issue, we need a way to build the "bridge" that allow the IDE to connec
-t the dots and make its way into `vendor/laravel/illuminate`.
+Due to this implementation, IDE unable to map the underlying facade. Hence to solve that issue, we need a way to build the "bridge" that allows the IDE to connect the dots and make its way into `vendor/laravel/illuminate`.
 
-Lucky for us, Barryvdh has thought of one solution for us, by generate an IDE he
-lper class that allow IDE to reads the contents and maps into the underlying Lar
-avel implementation.
+Lucky for us, Barryvdh has thought of one solution for us, by generate an IDE helper class that allows IDE to reads the contents and maps into the underlying Laravel implementation.
 
 Simply install `barryvdh/laravel-ide-helper` and configure it.
 
@@ -78,8 +66,7 @@ Simply install `barryvdh/laravel-ide-helper` and configure it.
 composer require --dev barryvdh/laravel-ide-helper
 ```
 
-You can prevent Laravel auto-discovery mechanism to detect laravel-ide-helper. T
-his is useful when you're pushing to production.
+You can prevent Laravel auto-discovery mechanism to detect laravel-ide-helper. This is useful when you're pushing to production.
 
 
 In your `composer.json`. Add the following
@@ -95,8 +82,7 @@ In your `composer.json`. Add the following
 }
 ```
 
-Then, for the `laravel-ide-helper` to work, it is needed to be loaded into provi
-ders. Add the following class into `config/app.php`
+Then, for the `laravel-ide-helper` to work, it is needed to be loaded into providers. Add the following class into `config/app.php`
 
 ```php
 <?php
@@ -117,6 +103,5 @@ public function register() {
 ?>
 ```
 
-That is it! Now every IDE would not be squawking for error messages in your `rou
-tes.php` and `route/web.php` or `User::get()` in your controllers
+That is it! Now every IDE would not be squawking for error messages in your `routes.php` and `route/web.php` or `User::get()` in your controllers
 
